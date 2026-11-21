@@ -4,7 +4,7 @@
 // start a level, click differences and read state without a real mouse.
 
 import { SCENES } from './scenes.js';
-import { HINTS_PER_LEVEL, Level, toggleMute } from './engine.js';
+import { HINT_COST, HINTS_PER_LEVEL, Level, toggleMute } from './engine.js';
 import { isMuted, play } from './sound.js';
 
 const BEST_KEY = 'curious-corners-best';
@@ -90,7 +90,7 @@ function onLevelEvent(event) {
   } else if (event.type === 'miss') {
     toast(`Not a difference — ${event.penalty}s penalty. Look closer!`);
   } else if (event.type === 'hint') {
-    toast(`Hint: something changed near the gold ring (−${50} points)`);
+    toast(`Hint: something changed near the gold ring (−${HINT_COST} points)`);
   } else if (event.type === 'end') {
     finishLevel(event);
     return;
