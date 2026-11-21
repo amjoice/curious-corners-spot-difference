@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spot the Difference — Curious Corners</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <header id="hud" hidden>
+    <div class="hud-left">
+      <span id="level-name">Sunny Park</span>
+      <span id="level-sub">Level 1 of 3</span>
+    </div>
+    <div class="hud-mid">
+      <div id="timer-wrap" title="Time left">
+        <div id="timer-bar"></div>
+        <span id="timer-text">2:30</span>
+      </div>
+    </div>
+    <div class="hud-right">
+      <span id="found-counter" title="Differences found">Found 0 / 7 &middot; 7 remaining</span>
+      <span id="score">Score 0</span>
+      <button id="hint-btn" type="button" title="Hint (H) — reveals one difference for a moment">💡 Hint <b id="hints-left">3</b></button>
+      <button id="mute-btn" type="button" title="Sound on/off (M)">🔊</button>
+      <button id="menu-btn" type="button" title="Back to menu (Esc)">☰ Menu</button>
+    </div>
+  </header>
+
+  <main id="stage">
+    <!-- Menu screen -->
+    <section id="screen-menu" class="screen">
+      <h1>Spot the Difference</h1>
+      <p class="tagline">Curious Corners &mdash; three hand-drawn scenes, dozens of sneaky changes.</p>
+      <p class="howto">Two pictures sit side by side. They look the same &mdash; they are not.
+        Click a difference on <b>either</b> picture to circle it. Find them all before the clock runs out.
+        Wrong clicks cost 3 seconds. Stuck? Spend a hint (<b>H</b>).</p>
+      <div id="level-cards"></div>
+      <p class="keys">Keys: <b>H</b> hint &nbsp;·&nbsp; <b>M</b> sound &nbsp;·&nbsp; <b>R</b> restart level &nbsp;·&nbsp; <b>Esc</b> menu</p>
+      <p class="best" id="menu-best"></p>
+    </section>
+
+    <!-- Play screen -->
+    <section id="screen-play" class="screen" hidden>
+      <div id="panels">
+        <figure class="panel">
+          <figcaption>Original</figcaption>
+          <canvas id="canvas-left" width="640" height="420"></canvas>
+        </figure>
+        <div id="versus" aria-hidden="true">VS</div>
+        <figure class="panel">
+          <figcaption>Changed</figcaption>
+          <canvas id="canvas-right" width="640" height="420"></canvas>
+        </figure>
+      </div>
+      <p id="toast" aria-live="polite"></p>
+      <div id="found-list"></div>
+    </section>
+
+    <!-- Level complete / time up overlay -->
+    <section id="screen-over" class="screen" hidden>
+      <h1 id="over-title">Level complete!</h1>
+      <p id="over-sub"></p>
+      <div id="over-stars" aria-label="stars"></div>
+      <dl id="over-stats"></dl>
+      <div class="over-buttons">
+        <button id="over-next" type="button">Next level →</button>
+        <button id="over-retry" type="button">↻ Play again</button>
+        <button id="over-menu" type="button">☰ Menu</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Spot the Difference — Curious Corners · an original game · all art drawn in code, no images, no network</span>
+  </footer>
+</div>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
